@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "Home",
+    "realisations": "Projects",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Fullstack Web Developer",
+    "subtitle": "I build modern and high-performing web experiences.",
+    "cta": "Contact me"
+  },
+  "about": {
+    "title": "About me",
+    "description": "I am APEDO Elias Josué Kossi, a passionate web developer based in Lomé, Togo."
+  },
+  "services": {
+    "title": "My Services",
+    "webDev": "Web Development",
+    "restaurant": "Restaurant Websites",
+    "ecommerce": "E-commerce",
+    "maintenance": "Maintenance"
+  },
+  "contact": {
+    "title": "Contact me",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "success": "Message sent successfully!"
+  },
+  "footer": {
+    "copyright": "© 2026 APEDO Elias Josué Kossi. All rights reserved."
+  },
+  "admin": {
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "messages": "Messages",
+    "projects": "Projects",
+    "reviews": "Reviews",
+    "logout": "Logout"
+  }
+}
