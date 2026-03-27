@@ -1,38 +1,21 @@
-import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
-import { Session } from '@supabase/supabase-js';
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
+import LoadingScreen from '../components/LoadingScreen';
 
-export default function PrivateRoute({ children }: { children: React.ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
+interface PrivateRouteProps {
+  children?: React.ReactNode;
+}
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setLoading(false);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
+export default function PrivateRoute({ children }: PrivateRouteProps) {
+  const { user, loading } = useAuth();
 
   if (loading) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
-  if (!session) {
+  if (!user) {
     return <Navigate to="/admin/login" replace />;
   }
 
-  return <>{children}</>;
+  return <>{children ? children : <Outlet />}</>;
 }

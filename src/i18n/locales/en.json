@@ -1,4 +1,7 @@
 {
+  "common": {
+    "loading": "Loading..."
+  },
   "nav": {
     "home": "Home",
     "realisations": "Projects",
@@ -236,6 +239,15 @@
     "message": "Message",
     "send": "Send",
     "success": "Message sent successfully!"
+  },
+  "loginPage": {
+    "title": "Administration",
+    "subtitle": "Restricted access",
+    "email": "Email address",
+    "password": "Password",
+    "submit": "Login",
+    "loading": "Connecting...",
+    "error": "Invalid credentials. Please try again."
   },
   "admin": {
     "login": "Login",

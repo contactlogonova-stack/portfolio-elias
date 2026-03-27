@@ -1,4 +1,7 @@
 {
+  "common": {
+    "loading": "Chargement..."
+  },
   "nav": {
     "home": "Accueil",
     "realisations": "Réalisations",
@@ -236,6 +239,15 @@
     "message": "Message",
     "send": "Envoyer",
     "success": "Message envoyé avec succès !"
+  },
+  "loginPage": {
+    "title": "Administration",
+    "subtitle": "Accès réservé",
+    "email": "Adresse email",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "loading": "Connexion...",
+    "error": "Identifiants incorrects. Veuillez réessayer."
   },
   "admin": {
     "login": "Connexion",

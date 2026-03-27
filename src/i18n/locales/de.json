@@ -1,4 +1,7 @@
 {
+  "common": {
+    "loading": "Wird geladen..."
+  },
   "nav": {
     "home": "Startseite",
     "realisations": "Projekte",
@@ -236,6 +239,15 @@
     "message": "Nachricht",
     "send": "Senden",
     "success": "Nachricht erfolgreich gesendet!"
+  },
+  "loginPage": {
+    "title": "Verwaltung",
+    "subtitle": "Eingeschränkter Zugriff",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "submit": "Anmelden",
+    "loading": "Verbinden...",
+    "error": "Ungültige Anmeldedaten. Bitte versuchen Sie es erneut."
   },
   "admin": {
     "login": "Anmelden",

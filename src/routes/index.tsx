@@ -10,11 +10,12 @@ import AboutPage from '../pages/AboutPage';
 import ServicesPage from '../pages/ServicesPage';
 import ContactPage from '../pages/ContactPage';
 
-import LoginPage from '../pages/LoginPage';
+import LoginPage from '../pages/admin/LoginPage';
 import DashboardPage from '../pages/DashboardPage';
 import AdminMessagesPage from '../pages/AdminMessagesPage';
 import AdminRealisationsPage from '../pages/AdminRealisationsPage';
 import AdminAvisPage from '../pages/AdminAvisPage';
+import AdminStatsPage from '../pages/AdminStatsPage';
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ export const router = createBrowserRouter([
       { path: 'messages', element: <AdminMessagesPage /> },
       { path: 'realisations', element: <AdminRealisationsPage /> },
       { path: 'avis', element: <AdminAvisPage /> },
+      { path: 'stats', element: <AdminStatsPage /> },
     ],
   },
   {
