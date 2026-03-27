@@ -6,14 +6,221 @@
     "services": "Dienstleistungen",
     "contact": "Kontakt"
   },
+  "footer": {
+    "title": "Fullstack Webentwickler",
+    "catchphrase": "Erstellung moderner, leistungsstarker und maßgeschneiderter Web-Erlebnisse.",
+    "navigation": "Navigation",
+    "contact": "Kontakt",
+    "copyright": "© 2026 APEDO Elias Josué Kossi. Alle Rechte vorbehalten.",
+    "poweredBy": "Unterstützt von"
+  },
+  "whatsapp": {
+    "tooltip": "Lass uns auf WhatsApp chatten 💬",
+    "message": "Hallo Elias, ich kontaktiere dich über dein Portfolio.",
+    "aria": "Auf WhatsApp kontaktieren"
+  },
   "hero": {
-    "title": "Fullstack-Webentwickler",
-    "subtitle": "Ich erstelle moderne und leistungsstarke Web-Erlebnisse.",
-    "cta": "Kontaktiere mich"
+    "badge": "👋 Verfügbar für neue Projekte",
+    "title": "Elias Josué Kossi",
+    "typewriter": [
+      "Fullstack Webentwickler",
+      "React & TypeScript Experte",
+      "Ersteller digitaler Erlebnisse"
+    ],
+    "description": "Ich verwandle Ihre Ideen in moderne, schnelle und elegante Websites aus Lomé, Togo.",
+    "cta": {
+      "projects": "Meine Projekte ansehen",
+      "contact": "Mich kontaktieren"
+    }
+  },
+  "stats": {
+    "projects": "Abgeschlossene Projekte",
+    "clients": "Zufriedene Kunden",
+    "experience": "Jahre Erfahrung",
+    "technologies": "Beherrschte Technologien"
+  },
+  "projects": {
+    "title": "Meine neuesten Projekte",
+    "subtitle": "Entdecken Sie eine Auswahl meiner aktuellen Arbeiten.",
+    "viewAll": "Alle meine Projekte ansehen",
+    "empty": "Noch keine Projekte. Schauen Sie bald wieder vorbei!"
+  },
+  "realisationsPage": {
+    "hero": {
+      "title": "Meine Projekte",
+      "subtitle": "Entdecken Sie alle meine Projekte, von maßgeschneiderter Webentwicklung bis hin zu komplexen Anwendungen."
+    },
+    "breadcrumb": {
+      "home": "Startseite",
+      "realisations": "Projekte"
+    },
+    "filters": {
+      "all": "Alle"
+    },
+    "card": {
+      "viewProject": "Projekt ansehen"
+    },
+    "modal": {
+      "liveUrl": "Website ansehen",
+      "githubUrl": "Quellcode",
+      "confidential": "Vertrauliches Projekt"
+    },
+    "empty": "Keine Projekte für diese Kategorie gefunden."
+  },
+  "reviews": {
+    "title": "Was meine Kunden sagen",
+    "subtitle": "Erfahrungsberichte von Personen, mit denen ich zusammengearbeitet habe."
+  },
+  "cta": {
+    "title": "Haben Sie ein Projekt im Sinn?",
+    "subtitle": "Lassen Sie uns über Ihre Ideen sprechen und sehen, wie ich helfen kann.",
+    "button": "Projekt starten"
   },
   "about": {
     "title": "Über mich",
     "description": "Ich bin APEDO Elias Josué Kossi, ein leidenschaftlicher Webentwickler aus Lomé, Togo."
+  },
+  "aboutPage": {
+    "hero": {
+      "title": "Über mich"
+    },
+    "breadcrumb": {
+      "home": "Startseite",
+      "about": "Über mich"
+    },
+    "presentation": {
+      "title": "Fullstack Webentwickler & Gründer der Logonova Agency",
+      "paragraph": "Ich bin ein leidenschaftlicher Webentwickler aus Lomé, Togo. Als Autodidakt habe ich eine klare Vision: hochwertige digitale Erlebnisse zu schaffen. Ich habe starke internationale Ambitionen und bin offen für Möglichkeiten in Frankreich, Kanada, der Schweiz, den USA und Deutschland.",
+      "info": {
+        "location": "Lomé, Togo",
+        "age": "16 Jahre alt",
+        "availability": "International verfügbar",
+        "founder": "Gründer Logonova Agency"
+      }
+    },
+    "skills": {
+      "title": "Meine Fähigkeiten",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Werkzeuge",
+      "learning": "Derzeit am Lernen"
+    },
+    "timeline": {
+      "title": "Mein Werdegang",
+      "step1": {
+        "year": "2024",
+        "desc": "Beginn der autodidaktischen Webentwicklung"
+      },
+      "step2": {
+        "year": "2025",
+        "desc": "Gründung der Logonova Agency in Lomé"
+      },
+      "step3": {
+        "year": "2025",
+        "desc": "Erste Restaurantkunden (La Table du DG, La Huqqa, Café Paris)"
+      },
+      "step4": {
+        "year": "2026",
+        "desc": "Start des persönlichen Portfolios & internationale Ambitionen"
+      }
+    },
+    "cta": {
+      "title": "Lass uns zusammenarbeiten",
+      "button": "Mich kontaktieren"
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "title": "Meine Dienstleistungen",
+      "subtitle": "Maßgeschneiderte Web-Lösungen für Ihr Unternehmen"
+    },
+    "breadcrumb": {
+      "home": "Startseite",
+      "services": "Dienstleistungen"
+    },
+    "servicesList": {
+      "vitrine": {
+        "title": "Showcase-Website 🌐",
+        "desc": "Präsentieren Sie Ihr Unternehmen mit einer professionellen und attraktiven Website.",
+        "features": ["Responsive Design", "Basis-SEO", "Kontaktformular", "Bereitstellung"]
+      },
+      "restaurant": {
+        "title": "Restaurant-Website 🍽️",
+        "desc": "Gewinnen Sie mehr Kunden mit einer speziellen Website für Ihr Restaurant.",
+        "features": ["Interaktives Menü", "WhatsApp-Bestellung", "Standortkarte", "Fotogalerie"]
+      },
+      "ecommerce": {
+        "title": "E-Commerce 🛒",
+        "desc": "Verkaufen Sie Ihre Produkte online mit einem leistungsstarken Shop.",
+        "features": ["Produktkatalog", "Warenkorb", "Online-Zahlung", "Admin-Dashboard"]
+      },
+      "webapp": {
+        "title": "Webanwendung ⚡",
+        "desc": "Maßgeschneiderte Anwendungen für Ihre komplexen Anforderungen.",
+        "features": ["React + TypeScript", "REST-API", "Benutzer-Auth", "Cloud-Bereitstellung"]
+      },
+      "maintenance": {
+        "title": "Wartung & Support 🛠️",
+        "desc": "Sichern Sie die Langlebigkeit und Sicherheit Ihrer Anwendung.",
+        "features": ["Regelmäßige Updates", "Fehlerbehebung", "Leistungsoptimierung", "Technischer Support"]
+      },
+      "consulting": {
+        "title": "Tech-Consulting 💡",
+        "desc": "Profitieren Sie von meiner Expertise bei Ihren technologischen Entscheidungen.",
+        "features": ["Projekt-Audit", "Stack-Auswahl", "Architektur", "Empfehlungen"]
+      }
+    },
+    "process": {
+      "title": "Wie ich arbeite",
+      "step1": { "title": "Diskussion 💬", "desc": "Ihre Bedürfnisse verstehen" },
+      "step2": { "title": "Design 🎨", "desc": "Mockup und Validierung" },
+      "step3": { "title": "Entwicklung 💻", "desc": "Sauberer und moderner Code" },
+      "step4": { "title": "Lieferung 🚀", "desc": "Bereitstellung und Überwachung" }
+    },
+    "cta": {
+      "title": "Bereit, Ihr Projekt zu starten?",
+      "subtitle": "Kontaktieren Sie mich für ein kostenloses Angebot",
+      "button": "Mich kontaktieren"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Kontaktiere mich",
+      "subtitle": "Lass uns über dein Projekt sprechen"
+    },
+    "breadcrumb": {
+      "home": "Startseite",
+      "contact": "Kontakt"
+    },
+    "info": {
+      "title": "Lass uns in Kontakt bleiben",
+      "desc": "Zögere nicht, mich zu kontaktieren, um über dein Projekt, eine Zusammenarbeitsmöglichkeit zu sprechen oder einfach nur Hallo zu sagen.",
+      "email": "E-Mail",
+      "location": "Standort",
+      "locationValue": "Lomé, Togo",
+      "response": "Antwortzeit",
+      "responseValue": "Unter 24h",
+      "whatsapp": "Lass uns auf WhatsApp chatten"
+    },
+    "form": {
+      "name": "Vollständiger Name",
+      "namePlaceholder": "Max Mustermann",
+      "email": "E-Mail",
+      "emailPlaceholder": "max@beispiel.de",
+      "subject": "Betreff",
+      "subjectPlaceholder": "Website-Erstellung",
+      "message": "Nachricht",
+      "messagePlaceholder": "Beschreibe dein Projekt...",
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet...",
+      "success": "Deine Nachricht wurde erfolgreich gesendet! Ich werde mich sehr bald melden.",
+      "error": "Beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuche es erneut."
+    },
+    "validation": {
+      "required": "Dieses Feld ist erforderlich",
+      "email": "Ungültige E-Mail-Adresse",
+      "minLength": "Die Nachricht muss mindestens 20 Zeichen lang sein"
+    }
   },
   "services": {
     "title": "Meine Dienstleistungen",
@@ -29,9 +236,6 @@
     "message": "Nachricht",
     "send": "Senden",
     "success": "Nachricht erfolgreich gesendet!"
-  },
-  "footer": {
-    "copyright": "© 2026 APEDO Elias Josué Kossi. Alle Rechte vorbehalten."
   },
   "admin": {
     "login": "Anmelden",

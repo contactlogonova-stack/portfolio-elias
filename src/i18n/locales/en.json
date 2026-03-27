@@ -6,14 +6,221 @@
     "services": "Services",
     "contact": "Contact"
   },
-  "hero": {
+  "footer": {
     "title": "Fullstack Web Developer",
-    "subtitle": "I build modern and high-performing web experiences.",
-    "cta": "Contact me"
+    "catchphrase": "Creating modern, high-performance, and custom web experiences.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "copyright": "© 2026 APEDO Elias Josué Kossi. All rights reserved.",
+    "poweredBy": "Powered by"
+  },
+  "whatsapp": {
+    "tooltip": "Let's chat on WhatsApp 💬",
+    "message": "Hello Elias, I'm contacting you from your portfolio.",
+    "aria": "Contact on WhatsApp"
+  },
+  "hero": {
+    "badge": "👋 Available for new projects",
+    "title": "Elias Josué Kossi",
+    "typewriter": [
+      "Fullstack Web Developer",
+      "React & TypeScript Expert",
+      "Digital Experience Creator"
+    ],
+    "description": "I transform your ideas into modern, fast, and elegant websites from Lomé, Togo.",
+    "cta": {
+      "projects": "View my projects",
+      "contact": "Contact me"
+    }
+  },
+  "stats": {
+    "projects": "Projects completed",
+    "clients": "Satisfied clients",
+    "experience": "Years of experience",
+    "technologies": "Technologies mastered"
+  },
+  "projects": {
+    "title": "My latest projects",
+    "subtitle": "Discover a selection of my recent work.",
+    "viewAll": "View all my projects",
+    "empty": "No projects yet. Check back soon!"
+  },
+  "realisationsPage": {
+    "hero": {
+      "title": "My Projects",
+      "subtitle": "Discover all my projects, from custom web development to complex applications."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "realisations": "Projects"
+    },
+    "filters": {
+      "all": "All"
+    },
+    "card": {
+      "viewProject": "View project"
+    },
+    "modal": {
+      "liveUrl": "View site",
+      "githubUrl": "Source code",
+      "confidential": "Confidential project"
+    },
+    "empty": "No projects found for this category."
+  },
+  "reviews": {
+    "title": "What my clients say",
+    "subtitle": "Testimonials from people I've collaborated with."
+  },
+  "cta": {
+    "title": "Have a project in mind?",
+    "subtitle": "Let's discuss your ideas and see how I can help bring them to life.",
+    "button": "Start a project"
   },
   "about": {
     "title": "About me",
     "description": "I am APEDO Elias Josué Kossi, a passionate web developer based in Lomé, Togo."
+  },
+  "aboutPage": {
+    "hero": {
+      "title": "About me"
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "about": "About"
+    },
+    "presentation": {
+      "title": "Fullstack Web Developer & Founder of Logonova Agency",
+      "paragraph": "Passionate about web development from Lomé, Togo, I am a self-taught developer with a clear vision: to create high-quality digital experiences. I have strong international ambitions and am open to opportunities in France, Canada, Switzerland, the USA, and Germany.",
+      "info": {
+        "location": "Lomé, Togo",
+        "age": "16 years old",
+        "availability": "Available internationally",
+        "founder": "Founder Logonova Agency"
+      }
+    },
+    "skills": {
+      "title": "My skills",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools",
+      "learning": "Currently learning"
+    },
+    "timeline": {
+      "title": "My journey",
+      "step1": {
+        "year": "2024",
+        "desc": "Started self-taught web development"
+      },
+      "step2": {
+        "year": "2025",
+        "desc": "Founded Logonova Agency in Lomé"
+      },
+      "step3": {
+        "year": "2025",
+        "desc": "First restaurant clients (La Table du DG, La Huqqa, Café Paris)"
+      },
+      "step4": {
+        "year": "2026",
+        "desc": "Launch of personal portfolio & international ambitions"
+      }
+    },
+    "cta": {
+      "title": "Let's work together",
+      "button": "Contact me"
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "title": "My Services",
+      "subtitle": "Custom web solutions for your business"
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "services": "Services"
+    },
+    "servicesList": {
+      "vitrine": {
+        "title": "Showcase Website 🌐",
+        "desc": "Present your business with a professional and attractive website.",
+        "features": ["Responsive design", "Basic SEO", "Contact form", "Deployment"]
+      },
+      "restaurant": {
+        "title": "Restaurant Website 🍽️",
+        "desc": "Attract more customers with a dedicated website for your restaurant.",
+        "features": ["Interactive menu", "WhatsApp ordering", "Location map", "Photo gallery"]
+      },
+      "ecommerce": {
+        "title": "E-commerce 🛒",
+        "desc": "Sell your products online with a high-performance store.",
+        "features": ["Product catalog", "Shopping cart", "Online payment", "Admin dashboard"]
+      },
+      "webapp": {
+        "title": "Web Application ⚡",
+        "desc": "Custom applications to meet your complex needs.",
+        "features": ["React + TypeScript", "REST API", "User Auth", "Cloud deployment"]
+      },
+      "maintenance": {
+        "title": "Maintenance & Support 🛠️",
+        "desc": "Ensure the longevity and security of your application.",
+        "features": ["Regular updates", "Bug fixes", "Performance optimization", "Technical support"]
+      },
+      "consulting": {
+        "title": "Tech Consulting 💡",
+        "desc": "Benefit from my expertise for your technological choices.",
+        "features": ["Project audit", "Stack selection", "Architecture", "Recommendations"]
+      }
+    },
+    "process": {
+      "title": "How I work",
+      "step1": { "title": "Discussion 💬", "desc": "Understanding your needs" },
+      "step2": { "title": "Design 🎨", "desc": "Mockup and validation" },
+      "step3": { "title": "Development 💻", "desc": "Clean and modern code" },
+      "step4": { "title": "Delivery 🚀", "desc": "Deployment and monitoring" }
+    },
+    "cta": {
+      "title": "Ready to start your project?",
+      "subtitle": "Contact me for a free quote",
+      "button": "Contact me"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Contact me",
+      "subtitle": "Let's talk about your project"
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "contact": "Contact"
+    },
+    "info": {
+      "title": "Let's stay in touch",
+      "desc": "Feel free to contact me to discuss your project, a collaboration opportunity, or just to say hi.",
+      "email": "Email",
+      "location": "Location",
+      "locationValue": "Lomé, Togo",
+      "response": "Response time",
+      "responseValue": "Under 24h",
+      "whatsapp": "Let's chat on WhatsApp"
+    },
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "John Doe",
+      "email": "Email",
+      "emailPlaceholder": "john@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Website creation",
+      "message": "Message",
+      "messagePlaceholder": "Describe your project...",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully! I will reply very soon.",
+      "error": "An error occurred while sending the message. Please try again."
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Invalid email address",
+      "minLength": "The message must contain at least 20 characters"
+    }
   },
   "services": {
     "title": "My Services",
@@ -29,9 +236,6 @@
     "message": "Message",
     "send": "Send",
     "success": "Message sent successfully!"
-  },
-  "footer": {
-    "copyright": "© 2026 APEDO Elias Josué Kossi. All rights reserved."
   },
   "admin": {
     "login": "Login",
