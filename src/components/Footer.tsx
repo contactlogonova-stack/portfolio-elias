@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Github, Linkedin, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../lib/animations';
-import logo from '@/assets/logo.png';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -30,7 +29,7 @@ export default function Footer() {
           <motion.div variants={fadeInUp} className="flex flex-col items-center md:items-start">
             <Link to="/" className="mb-6 inline-block">
               <img 
-                src={logo} 
+                src="/logo.png" 
                 alt="Logonova" 
                 className="h-12 w-auto object-contain brightness-0 invert"
               />

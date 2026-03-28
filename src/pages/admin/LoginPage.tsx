@@ -8,7 +8,6 @@ import { useAuth } from '../../hooks/useAuth';
 import { Button } from '../../components/ui/Button';
 import { Spinner } from '../../components/ui/Spinner';
 import { scaleIn, fadeInUp } from '../../lib/animations';
-import logo from '@/assets/logo.png';
 
 export default function LoginPage() {
   const { t } = useTranslation();
@@ -60,7 +59,7 @@ export default function LoginPage() {
       >
         <div className="flex flex-col items-center mb-8">
           <img
-            src={logo}
+            src="/logo.png"
             alt="Logo"
             className="h-[60px] w-auto object-contain mb-6"
           />

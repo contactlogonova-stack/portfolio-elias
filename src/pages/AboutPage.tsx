@@ -7,7 +7,6 @@ import { SectionTitle } from '../components/ui/SectionTitle';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { fadeInUp, staggerContainer } from '../lib/animations';
-import avatar from '@/assets/avatar.png';
 
 export default function AboutPage() {
   const { t } = useTranslation();
@@ -86,7 +85,7 @@ export default function AboutPage() {
             >
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl relative z-10 bg-primary-100">
                 <img 
-                  src={avatar} 
+                  src="/avatar.png" 
                   alt="APEDO Elias Josué Kossi" 
                   className="w-full h-full object-cover"
                   onError={(e) => {

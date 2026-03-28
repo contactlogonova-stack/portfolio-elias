@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useScrollPosition } from '../hooks/useScrollPosition';
-import logo from '@/assets/logo.png';
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -42,7 +41,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center gap-2">
             <img 
-              src={logo} 
+              src="/logo.png" 
               alt="Logonova" 
               className="h-10 w-auto object-contain"
             />

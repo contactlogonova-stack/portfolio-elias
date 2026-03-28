@@ -14,7 +14,6 @@ import { Spinner } from '../components/ui/Spinner';
 import { fadeInUp, staggerContainer } from '../lib/animations';
 import type { Stat } from '../lib/database.types';
 import { useAvis } from '../hooks/useAvis';
-import avatar from '@/assets/avatar.png';
 
 interface Realisation {
   id: string;
@@ -218,7 +217,7 @@ export default function HomePage() {
             >
               <div className="relative w-full aspect-square rounded-full bg-gradient-to-tr from-primary-100 to-accent-100 p-4">
                 <img
-                  src={avatar}
+                  src="/avatar.png"
                   alt="Elias Josué Kossi"
                   className="w-full h-full object-cover rounded-full shadow-2xl"
                   onError={(e) => {
