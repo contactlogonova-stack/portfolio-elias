@@ -14,6 +14,7 @@ import { Spinner } from '../components/ui/Spinner';
 import { fadeInUp, staggerContainer } from '../lib/animations';
 import type { Stat } from '../lib/database.types';
 import { useAvis } from '../hooks/useAvis';
+import avatar from '@/assets/avatar.png';
 
 interface Realisation {
   id: string;
@@ -217,13 +218,19 @@ export default function HomePage() {
             >
               <div className="relative w-full aspect-square rounded-full bg-gradient-to-tr from-primary-100 to-accent-100 p-4">
                 <img
-                  src="/src/assets/avatar.png"
+                  src={avatar}
                   alt="Elias Josué Kossi"
                   className="w-full h-full object-cover rounded-full shadow-2xl"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://picsum.photos/seed/elias/800/800';
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.classList.remove('hidden');
                   }}
                 />
+                <div className="hidden w-full h-full rounded-full bg-gradient-to-br from-[#1B3F6B] to-[#2EAA6E] flex items-center justify-center shadow-2xl">
+                  <span className="text-white font-bold text-7xl sm:text-8xl md:text-9xl font-title">EJK</span>
+                </div>
               </div>
             </motion.div>
           </div>

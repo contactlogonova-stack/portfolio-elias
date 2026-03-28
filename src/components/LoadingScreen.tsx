@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Spinner } from './ui/Spinner';
+import logo from '@/assets/logo.png';
 
 export default function LoadingScreen() {
   const { t } = useTranslation();
@@ -14,12 +15,9 @@ export default function LoadingScreen() {
         className="flex flex-col items-center"
       >
         <img
-          src="/src/assets/logo.png"
+          src={logo}
           alt="Logonova"
           className="h-[80px] w-auto object-contain mb-8"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = 'https://picsum.photos/seed/logo/150/80';
-          }}
         />
         <Spinner size="lg" className="text-primary-600 mb-4" />
         <p className="text-neutral-500 font-medium tracking-wide">

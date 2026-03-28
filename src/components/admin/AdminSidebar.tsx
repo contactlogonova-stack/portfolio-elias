@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, MessageSquare, FolderOpen, Star, BarChart2, LogOut, Settings } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { useMessages } from '../../hooks/useMessages';
+import logo from '@/assets/logo.png';
 
 interface AdminSidebarProps {
   onClose?: () => void;
@@ -25,12 +26,9 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
       {/* Header */}
       <div className="p-6 border-b border-neutral-100 flex flex-col items-center">
         <img
-          src="/src/assets/logo.png"
+          src={logo}
           alt="Logonova"
           className="h-12 w-auto object-contain mb-2"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = 'https://picsum.photos/seed/logo/150/48';
-          }}
         />
         <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
           Administration

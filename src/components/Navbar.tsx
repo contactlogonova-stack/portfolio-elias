@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useScrollPosition } from '../hooks/useScrollPosition';
+import logo from '@/assets/logo.png';
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -40,18 +41,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center gap-2">
-            {/* Utilisation d'un chemin absolu pour éviter l'erreur de build si le fichier n'existe pas encore */}
             <img 
-              src="/src/assets/logo.png" 
+              src={logo} 
               alt="Logonova" 
               className="h-10 w-auto object-contain"
-              onError={(e) => {
-                // Fallback visuel si le logo n'est pas encore ajouté
-                (e.target as HTMLImageElement).style.display = 'none';
-                (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-              }}
             />
-            <span className="hidden text-xl font-title font-bold text-primary-600">Elias Josué</span>
           </Link>
 
           {/* Navigation Desktop */}

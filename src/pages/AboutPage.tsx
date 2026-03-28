@@ -7,6 +7,7 @@ import { SectionTitle } from '../components/ui/SectionTitle';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { fadeInUp, staggerContainer } from '../lib/animations';
+import avatar from '@/assets/avatar.png';
 
 export default function AboutPage() {
   const { t } = useTranslation();
@@ -85,13 +86,19 @@ export default function AboutPage() {
             >
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl relative z-10 bg-primary-100">
                 <img 
-                  src="/src/assets/avatar.png" 
+                  src={avatar} 
                   alt="APEDO Elias Josué Kossi" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://picsum.photos/seed/elias/800/800';
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.classList.remove('hidden');
                   }}
                 />
+                <div className="hidden w-full h-full bg-gradient-to-br from-[#1B3F6B] to-[#2EAA6E] flex items-center justify-center">
+                  <span className="text-white font-bold text-8xl font-title">EJK</span>
+                </div>
               </div>
               <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-accent-500 rounded-2xl z-0 hidden md:block"></div>
             </motion.div>
