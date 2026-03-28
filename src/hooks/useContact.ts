@@ -30,7 +30,10 @@ export function useContact() {
           }
         ]);
 
-      if (supabaseError) throw supabaseError;
+      if (supabaseError) {
+        console.error('Supabase insert error details:', supabaseError);
+        throw supabaseError;
+      }
 
       // Appeler la Edge Function pour envoyer la notification push (silencieusement)
       try {

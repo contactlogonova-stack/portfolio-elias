@@ -207,7 +207,10 @@ export default function ContactPage() {
                     className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3 text-red-800"
                   >
                     <AlertCircle className="shrink-0 mt-0.5" size={20} />
-                    <p className="font-medium">{t('contactPage.form.error')}</p>
+                    <div className="font-medium">
+                      <p>{t('contactPage.form.error')}</p>
+                      <p className="text-xs mt-1 opacity-70 font-mono">{error}</p>
+                    </div>
                   </motion.div>
                 )}
 
