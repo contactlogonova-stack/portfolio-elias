@@ -50,9 +50,15 @@ export function useContact() {
       }
 
       setSuccess(true);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error sending message:', err);
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      let errorMessage = 'An error occurred';
+      if (err && typeof err === 'object') {
+        errorMessage = err.message || err.details || err.hint || JSON.stringify(err, null, 2);
+      } else if (typeof err === 'string') {
+        errorMessage = err;
+      }
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
