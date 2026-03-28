@@ -5,10 +5,12 @@ import type { Stat } from '../lib/database.types';
 export function useAdminStats() {
   const [stats, setStats] = useState<Stat[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchStats = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       const { data, error } = await supabase
         .from('stats')
         .select('*')
@@ -16,8 +18,9 @@ export function useAdminStats() {
 
       if (error) throw error;
       setStats(data || []);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error fetching stats:', err);
+      setError(err.message || 'Erreur lors du chargement des statistiques');
     } finally {
       setLoading(false);
     }
@@ -66,6 +69,7 @@ export function useAdminStats() {
   return {
     stats,
     loading,
+    error,
     addStat,
     updateStat,
     deleteStat,

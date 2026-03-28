@@ -29,7 +29,7 @@ const IconRenderer = ({ name, size = 20, className = "" }: { name: string, size?
 };
 
 export default function AdminStatsPage() {
-  const { stats, loading, addStat, updateStat, deleteStat } = useAdminStats();
+  const { stats, loading, error, addStat, updateStat, deleteStat } = useAdminStats();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingStat, setEditingStat] = useState<Stat | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -116,6 +116,16 @@ export default function AdminStatsPage() {
           Ajouter une stat
         </Button>
       </div>
+
+      {error && (
+        <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm flex items-start gap-3 shadow-sm">
+          <div className="mt-0.5">❌</div>
+          <div>
+            <p className="font-bold mb-1">Erreur de chargement</p>
+            <p>{error}</p>
+          </div>
+        </div>
+      )}
 
       {loading ? (
         <div className="flex flex-col items-center justify-center py-20 gap-4">

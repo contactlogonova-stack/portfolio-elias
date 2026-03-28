@@ -5,10 +5,12 @@ import type { Avis } from '../lib/database.types';
 export function useAdminAvis() {
   const [avis, setAvis] = useState<Avis[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchAvis = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       const { data, error } = await supabase
         .from('avis')
         .select('*')
@@ -16,8 +18,9 @@ export function useAdminAvis() {
 
       if (error) throw error;
       setAvis(data || []);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error fetching avis:', err);
+      setError(err.message || 'Erreur lors du chargement des avis');
     } finally {
       setLoading(false);
     }
@@ -66,6 +69,7 @@ export function useAdminAvis() {
   return {
     avis,
     loading,
+    error,
     addAvis,
     updateAvis,
     deleteAvis,

@@ -4,6 +4,7 @@ import type { Realisation, Message } from '../lib/database.types';
 
 export function useDashboardStats() {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     realisationsCount: 0,
     unreadMessagesCount: 0,
@@ -16,6 +17,7 @@ export function useDashboardStats() {
   const fetchDashboardData = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       
       const [
         { count: realisationsCount, error: realisationsError },
@@ -48,8 +50,9 @@ export function useDashboardStats() {
         latestRealisations: latestRealisations || [],
         latestMessages: latestMessages || []
       });
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error fetching dashboard stats:', err);
+      setError(err.message || 'Erreur lors du chargement des statistiques du tableau de bord');
     } finally {
       setLoading(false);
     }
@@ -62,6 +65,7 @@ export function useDashboardStats() {
   return {
     ...stats,
     loading,
+    error,
     refresh: fetchDashboardData
   };
 }

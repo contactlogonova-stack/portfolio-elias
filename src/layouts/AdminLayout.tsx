@@ -8,6 +8,8 @@ export default function AdminLayout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  const isSupabaseConfigured = !!import.meta.env.VITE_SUPABASE_URL && !!import.meta.env.VITE_SUPABASE_ANON_KEY;
+
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -62,6 +64,16 @@ export default function AdminLayout() {
       {/* Main Content */}
       <main className="flex-1 overflow-x-hidden min-h-[calc(100vh-4rem)] md:min-h-screen">
         <div className="p-4 md:p-8 max-w-7xl mx-auto">
+          {!isSupabaseConfigured && (
+            <div className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-sm flex items-start gap-3 shadow-sm">
+              <div className="mt-0.5 text-lg">⚠️</div>
+              <div>
+                <p className="font-bold mb-1">Configuration Supabase manquante</p>
+                <p>L'application ne peut pas charger les données car les variables d'environnement <strong>VITE_SUPABASE_URL</strong> et <strong>VITE_SUPABASE_ANON_KEY</strong> ne sont pas configurées.</p>
+                <p className="mt-2 text-xs opacity-80 italic">Note: Si vous venez de les ajouter, essayez de rafraîchir la page ou de redémarrer le serveur de développement.</p>
+              </div>
+            </div>
+          )}
           <Outlet />
         </div>
       </main>

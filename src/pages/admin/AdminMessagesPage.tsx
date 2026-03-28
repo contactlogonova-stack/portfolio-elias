@@ -13,6 +13,7 @@ export default function AdminMessagesPage() {
   const {
     messages,
     loading,
+    error,
     unreadCount,
     markAsRead,
     markAsUnread,
@@ -100,6 +101,16 @@ export default function AdminMessagesPage() {
       </div>
 
       {/* Filters */}
+      {error && (
+        <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm flex items-start gap-3 shadow-sm">
+          <div className="mt-0.5">❌</div>
+          <div>
+            <p className="font-bold mb-1">Erreur de chargement</p>
+            <p>{error.message}</p>
+          </div>
+        </div>
+      )}
+
       <div className="flex items-center gap-2 mb-6 bg-white p-2 rounded-xl shadow-sm w-fit border border-neutral-200">
         <button
           onClick={() => setFilter('all')}

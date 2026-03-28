@@ -13,7 +13,7 @@ CREATE TABLE realisations (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     title TEXT NOT NULL,
     description TEXT NOT NULL,
-    image_url TEXT NOT NULL,
+    image_url TEXT,
     category TEXT NOT NULL,
     stack TEXT[] NOT NULL,
     live_url TEXT,
@@ -69,15 +69,15 @@ CREATE POLICY "Allow authenticated delete on messages" ON messages FOR DELETE US
 
 -- Policies for realisations
 CREATE POLICY "Allow public select on realisations" ON realisations FOR SELECT USING (true);
-CREATE POLICY "Allow authenticated insert on realisations" ON realisations FOR INSERT WITH CHECK (auth.role() = 'authenticated');
-CREATE POLICY "Allow authenticated update on realisations" ON realisations FOR UPDATE USING (auth.role() = 'authenticated');
-CREATE POLICY "Allow authenticated delete on realisations" ON realisations FOR DELETE USING (auth.role() = 'authenticated');
+CREATE POLICY "Allow authenticated insert on realisations" ON realisations FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Allow authenticated update on realisations" ON realisations FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Allow authenticated delete on realisations" ON realisations FOR DELETE TO authenticated USING (true);
 
 -- Policies for avis
 CREATE POLICY "Allow public select on avis" ON avis FOR SELECT USING (true);
-CREATE POLICY "Allow authenticated insert on avis" ON avis FOR INSERT WITH CHECK (auth.role() = 'authenticated');
-CREATE POLICY "Allow authenticated update on avis" ON avis FOR UPDATE USING (auth.role() = 'authenticated');
-CREATE POLICY "Allow authenticated delete on avis" ON avis FOR DELETE USING (auth.role() = 'authenticated');
+CREATE POLICY "Allow authenticated insert on avis" ON avis FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Allow authenticated update on avis" ON avis FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Allow authenticated delete on avis" ON avis FOR DELETE TO authenticated USING (true);
 
 -- Policies for push_subscriptions
 CREATE POLICY "Les utilisateurs gerent leurs propres abonnements"

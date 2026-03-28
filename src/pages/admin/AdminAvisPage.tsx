@@ -9,7 +9,7 @@ import { Spinner } from '../../components/ui/Spinner';
 import type { Avis } from '../../lib/database.types';
 
 export default function AdminAvisPage() {
-  const { avis, loading, addAvis, updateAvis, deleteAvis } = useAdminAvis();
+  const { avis, loading, error, addAvis, updateAvis, deleteAvis } = useAdminAvis();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingAvis, setEditingAvis] = useState<Avis | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -109,6 +109,16 @@ export default function AdminAvisPage() {
           Ajouter un avis
         </Button>
       </div>
+
+      {error && (
+        <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm flex items-start gap-3 shadow-sm">
+          <div className="mt-0.5">❌</div>
+          <div>
+            <p className="font-bold mb-1">Erreur de chargement</p>
+            <p>{error}</p>
+          </div>
+        </div>
+      )}
 
       {loading ? (
         <div className="flex flex-col items-center justify-center py-20 gap-4">

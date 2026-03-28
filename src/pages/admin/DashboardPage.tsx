@@ -41,7 +41,8 @@ export default function DashboardPage() {
     totalMessagesCount, 
     latestRealisations, 
     latestMessages, 
-    loading 
+    loading,
+    error
   } = useDashboardStats();
 
   const today = new Date().toLocaleDateString('fr-FR', { 
@@ -100,8 +101,23 @@ export default function DashboardPage() {
           <p className="text-neutral-500 text-sm flex items-center gap-2">
             Bonjour Elias 👋 <span className="w-1 h-1 rounded-full bg-neutral-300" /> {today}
           </p>
+          {import.meta.env.DEV && (
+            <div className="mt-2 text-[10px] text-neutral-400 font-mono">
+              Mode Debug: Supabase Configuré: {!!import.meta.env.VITE_SUPABASE_URL ? 'Oui' : 'Non'}
+            </div>
+          )}
         </div>
       </div>
+
+      {error && (
+        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm flex items-start gap-3 shadow-sm">
+          <div className="mt-0.5">❌</div>
+          <div>
+            <p className="font-bold mb-1">Erreur de chargement</p>
+            <p>{error}</p>
+          </div>
+        </div>
+      )}
 
       {/* Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">

@@ -23,7 +23,7 @@ export interface Realisation {
 
 export interface Stat {
   id: string;
-  value: number;
+  value: string;
   label_fr: string;
   label_en: string;
   label_de: string;

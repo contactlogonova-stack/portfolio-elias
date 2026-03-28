@@ -23,7 +23,7 @@ const initialFormData: FormData = {
 };
 
 export default function AdminRealisationsPage() {
-  const { realisations, loading, addRealisation, updateRealisation, deleteRealisation, refresh } = useAdminRealisations();
+  const { realisations, loading, error, addRealisation, updateRealisation, deleteRealisation, refresh } = useAdminRealisations();
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -33,10 +33,12 @@ export default function AdminRealisationsPage() {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleOpenModal = (realisation?: Realisation) => {
+    setSubmitError(null);
     if (realisation) {
       setEditingId(realisation.id);
       setFormData({
@@ -111,6 +113,7 @@ export default function AdminRealisationsPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     try {
       // Include any pending tag input before submitting
       let finalFormData = { ...formData };
@@ -135,6 +138,7 @@ export default function AdminRealisationsPage() {
       setTagInput('');
     } catch (error: any) {
       console.error('Error saving realisation:', error);
+      setSubmitError(error.message || 'Une erreur est survenue lors de l\'enregistrement.');
     } finally {
       setIsSubmitting(false);
     }
@@ -200,6 +204,16 @@ export default function AdminRealisationsPage() {
       </div>
 
       {/* Content */}
+      {error && (
+        <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm flex items-start gap-3 shadow-sm">
+          <div className="mt-0.5">❌</div>
+          <div>
+            <p className="font-bold mb-1">Erreur de chargement</p>
+            <p>{error}</p>
+          </div>
+        </div>
+      )}
+
       {loading ? (
         <div className="flex justify-center py-20">
           <Spinner size="lg" />
@@ -359,6 +373,12 @@ export default function AdminRealisationsPage() {
               </div>
               
               <div className="p-4 sm:p-6 overflow-y-auto flex-1">
+                {submitError && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm">
+                    <p className="font-bold mb-1">Erreur</p>
+                    <p className="whitespace-pre-wrap">{submitError}</p>
+                  </div>
+                )}
                 <form id="realisation-form" onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   
                   {/* Image Upload */}

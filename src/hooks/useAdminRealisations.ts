@@ -6,10 +6,12 @@ import { uploadImage } from '../lib/cloudinary';
 export function useAdminRealisations() {
   const [realisations, setRealisations] = useState<Realisation[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchRealisations = async () => {
     try {
       setLoading(true);
+      setError(null);
       const response = await supabase
         .from('realisations')
         .select('*')
@@ -17,8 +19,9 @@ export function useAdminRealisations() {
 
       if (response.error) throw response.error;
       setRealisations(response.data || []);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Supabase error (useAdminRealisations):', err);
+      setError(err.message || 'Erreur lors du chargement des réalisations');
     } finally {
       setLoading(false);
     }
@@ -32,33 +35,37 @@ export function useAdminRealisations() {
     data: Omit<Realisation, 'id' | 'created_at'>,
     imageFile: File | null
   ) => {
-    let image_url = data.image_url || null;
-    
-    if (imageFile) {
-      image_url = await uploadImage(imageFile);
+    try {
+      let image_url = data.image_url || null;
+      
+      if (imageFile) {
+        image_url = await uploadImage(imageFile);
+      }
+
+      const payload = {
+        title: data.title,
+        description: data.description,
+        category: data.category,
+        stack: data.stack || [],
+        live_url: data.live_url || null,
+        github_url: data.github_url || null,
+        is_confidential: data.is_confidential || false,
+        image_url: image_url
+      };
+
+      const result = await supabase
+        .from('realisations')
+        .insert([payload])
+        .select();
+
+      if (result.error) throw result.error;
+      
+      await fetchRealisations();
+    } catch (err: any) {
+      console.error('Insert error (useAdminRealisations):', err);
+      const errorMessage = err.message || err.details || err.hint || JSON.stringify(err, null, 2);
+      throw new Error(errorMessage);
     }
-
-    const payload = {
-      title: data.title,
-      description: data.description,
-      category: data.category,
-      stack: data.stack || [],
-      live_url: data.live_url || null,
-      github_url: data.github_url || null,
-      is_confidential: data.is_confidential || false,
-      image_url: image_url
-    };
-
-    const result = await supabase
-      .from('realisations')
-      .insert([payload])
-      .select();
-
-    if (result.error) {
-      console.error('Insert error:', result.error);
-      throw new Error(`Erreur d'insertion: ${result.error.message}`);
-    }
-    await fetchRealisations();
   };
 
   const updateRealisation = async (
@@ -66,29 +73,33 @@ export function useAdminRealisations() {
     data: Partial<Realisation>,
     imageFile?: File | null
   ) => {
-    let image_url = data.image_url;
-    
-    if (imageFile) {
-      image_url = await uploadImage(imageFile);
+    try {
+      let image_url = data.image_url;
+      
+      if (imageFile) {
+        image_url = await uploadImage(imageFile);
+      }
+
+      const payload = {
+        ...data,
+        live_url: data.live_url || null,
+        github_url: data.github_url || null,
+        image_url
+      };
+
+      const { error } = await supabase
+        .from('realisations')
+        .update(payload)
+        .eq('id', id);
+
+      if (error) throw error;
+      
+      await fetchRealisations();
+    } catch (err: any) {
+      console.error('Update error (useAdminRealisations):', err);
+      const errorMessage = err.message || err.details || err.hint || JSON.stringify(err, null, 2);
+      throw new Error(errorMessage);
     }
-
-    const payload = {
-      ...data,
-      live_url: data.live_url || null,
-      github_url: data.github_url || null,
-      image_url
-    };
-
-    const { error } = await supabase
-      .from('realisations')
-      .update(payload)
-      .eq('id', id);
-
-    if (error) {
-      console.error('Update error:', error);
-      throw new Error(`Erreur de mise à jour: ${error.message}`);
-    }
-    await fetchRealisations();
   };
 
   const deleteRealisation = async (id: string) => {
@@ -104,6 +115,7 @@ export function useAdminRealisations() {
   return {
     realisations,
     loading,
+    error,
     addRealisation,
     updateRealisation,
     deleteRealisation,
