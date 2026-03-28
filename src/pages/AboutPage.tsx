@@ -85,9 +85,10 @@ export default function AboutPage() {
             >
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl relative z-10 bg-primary-100">
                 <img 
-                  src="/avatar.png" 
+                  src="https://i.postimg.cc/RZ8rJGjV/image-(7)-(1).webp" 
                   alt="APEDO Elias Josué Kossi" 
                   className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';

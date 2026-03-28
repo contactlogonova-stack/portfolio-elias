@@ -59,9 +59,10 @@ export default function LoginPage() {
       >
         <div className="flex flex-col items-center mb-8">
           <img
-            src="/logo.png"
+            src="https://i.postimg.cc/qqLVtrdx/logo-(1).png"
             alt="Logo"
             className="h-[60px] w-auto object-contain mb-6"
+            referrerPolicy="no-referrer"
           />
           <h1 className="text-2xl font-title font-bold text-primary-800 mb-2">
             {t('loginPage.title')}

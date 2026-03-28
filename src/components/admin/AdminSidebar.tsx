@@ -25,9 +25,10 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
       {/* Header */}
       <div className="p-6 border-b border-neutral-100 flex flex-col items-center">
         <img
-          src="/logo.png"
+          src="https://i.postimg.cc/qqLVtrdx/logo-(1).png"
           alt="Logonova"
           className="h-12 w-auto object-contain mb-2"
+          referrerPolicy="no-referrer"
         />
         <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
           Administration

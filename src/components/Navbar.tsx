@@ -41,9 +41,10 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center gap-2">
             <img 
-              src="/logo.png" 
+              src="https://i.postimg.cc/qqLVtrdx/logo-(1).png" 
               alt="Logonova" 
               className="h-10 w-auto object-contain"
+              referrerPolicy="no-referrer"
             />
           </Link>
 

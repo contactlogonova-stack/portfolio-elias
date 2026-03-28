@@ -29,9 +29,10 @@ export default function Footer() {
           <motion.div variants={fadeInUp} className="flex flex-col items-center md:items-start">
             <Link to="/" className="mb-6 inline-block">
               <img 
-                src="/logo.png" 
+                src="https://i.postimg.cc/qqLVtrdx/logo-(1).png" 
                 alt="Logonova" 
                 className="h-12 w-auto object-contain brightness-0 invert"
+                referrerPolicy="no-referrer"
               />
             </Link>
             <h3 className="text-xl font-bold mb-2">Elias Josué Kossi</h3>

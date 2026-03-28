@@ -217,9 +217,10 @@ export default function HomePage() {
             >
               <div className="relative w-full aspect-square rounded-full bg-gradient-to-tr from-primary-100 to-accent-100 p-4">
                 <img
-                  src="/avatar.png"
+                  src="https://i.postimg.cc/RZ8rJGjV/image-(7)-(1).webp"
                   alt="Elias Josué Kossi"
                   className="w-full h-full object-cover rounded-full shadow-2xl"
+                  referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';

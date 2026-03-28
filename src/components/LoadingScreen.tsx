@@ -14,9 +14,10 @@ export default function LoadingScreen() {
         className="flex flex-col items-center"
       >
         <img
-          src="/logo.png"
+          src="https://i.postimg.cc/qqLVtrdx/logo-(1).png"
           alt="Logonova"
           className="h-[80px] w-auto object-contain mb-8"
+          referrerPolicy="no-referrer"
         />
         <Spinner size="lg" className="text-primary-600 mb-4" />
         <p className="text-neutral-500 font-medium tracking-wide">
