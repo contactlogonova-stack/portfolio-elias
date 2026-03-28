@@ -16,7 +16,6 @@ export function useAvis() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      console.log('Fetched avis:', data);
       setAvis(data || []);
     } catch (err: any) {
       console.error('Error fetching avis (useAvis):', err);
@@ -27,7 +26,6 @@ export function useAvis() {
   };
 
   useEffect(() => {
-    console.log('useAvis hook initialized');
     fetchAvis();
   }, []);
 

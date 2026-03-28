@@ -28,7 +28,6 @@ export async function registerServiceWorker() {
     const registration = await navigator.serviceWorker.register('/sw.js', {
       scope: '/'
     });
-    console.log('Service Worker enregistré avec succès:', registration);
     return registration;
   } catch (error) {
     console.error('Erreur lors de l\'enregistrement du Service Worker:', error);
@@ -63,7 +62,6 @@ export async function subscribeToPush(registration: ServiceWorkerRegistration) {
       applicationServerKey: applicationServerKey
     });
     
-    console.log('Nouvelle souscription push créée:', subscription);
     return subscription;
   } catch (error) {
     console.error('Erreur lors de la souscription aux notifications push:', error);
@@ -95,8 +93,6 @@ export async function saveSubscription(subscription: PushSubscription) {
     console.error('Erreur lors de la sauvegarde de la souscription dans Supabase:', error);
     throw error;
   }
-  
-  console.log('Souscription sauvegardée avec succès dans Supabase');
 }
 
 /**

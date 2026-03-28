@@ -135,7 +135,6 @@ export default function AdminRealisationsPage() {
       setTagInput('');
     } catch (error: any) {
       console.error('Error saving realisation:', error);
-      alert(`Une erreur est survenue lors de l'enregistrement : ${error.message || JSON.stringify(error)}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -219,8 +218,8 @@ export default function AdminRealisationsPage() {
       ) : (
         <>
           {/* Desktop Table */}
-          <div className="hidden md:block bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden">
-            <table className="w-full text-left border-collapse">
+          <div className="hidden md:block bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[800px]">
               <thead>
                 <tr className="bg-neutral-50 border-b border-neutral-200 text-sm text-neutral-500 uppercase tracking-wider">
                   <th className="p-4 font-medium">Projet</th>
@@ -347,27 +346,27 @@ export default function AdminRealisationsPage() {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
             >
-              <div className="bg-white border-b border-neutral-100 p-6 flex items-center justify-between z-10 shrink-0">
-                <h2 className="text-xl font-bold text-primary-900">
+              <div className="bg-white border-b border-neutral-100 p-4 sm:p-6 flex items-center justify-between z-10 shrink-0">
+                <h2 className="text-lg sm:text-xl font-bold text-primary-900">
                   {editingId ? 'Modifier la réalisation' : 'Ajouter une réalisation'}
                 </h2>
                 <button 
                   onClick={handleCloseModal}
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-neutral-500 hover:text-primary-600 hover:bg-primary-50 transition-colors"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-neutral-500 hover:text-primary-600 hover:bg-primary-50 transition-colors"
                 >
-                  <X size={20} />
+                  <X size={18} />
                 </button>
               </div>
               
-              <div className="p-6 overflow-y-auto flex-1">
-                <form id="realisation-form" onSubmit={handleSubmit} className="space-y-6">
+              <div className="p-4 sm:p-6 overflow-y-auto flex-1">
+                <form id="realisation-form" onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   
                   {/* Image Upload */}
                   <div className="space-y-2">
                     <label className="block text-sm font-bold text-neutral-700">Image miniature</label>
-                    <div className="flex items-start gap-6">
+                    <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                       <div 
-                        className="w-32 h-32 rounded-xl border-2 border-dashed border-neutral-300 flex flex-col items-center justify-center text-neutral-400 bg-neutral-50 relative overflow-hidden group cursor-pointer hover:border-primary-400 hover:bg-primary-50 transition-colors"
+                        className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl border-2 border-dashed border-neutral-300 flex flex-col items-center justify-center text-neutral-400 bg-neutral-50 relative overflow-hidden group cursor-pointer hover:border-primary-400 hover:bg-primary-50 transition-colors"
                         onClick={() => fileInputRef.current?.click()}
                       >
                         {imagePreview ? (
@@ -543,12 +542,13 @@ export default function AdminRealisationsPage() {
                 </form>
               </div>
 
-              <div className="bg-neutral-50 border-t border-neutral-200 p-6 flex justify-end gap-3 shrink-0">
+              <div className="bg-neutral-50 border-t border-neutral-200 p-4 sm:p-6 flex justify-end gap-3 shrink-0">
                 <Button 
                   type="button"
                   variant="outline" 
                   onClick={handleCloseModal}
                   disabled={isSubmitting}
+                  className="px-4 py-2 text-sm sm:text-base"
                 >
                   Annuler
                 </Button>
@@ -556,7 +556,7 @@ export default function AdminRealisationsPage() {
                   type="submit" 
                   form="realisation-form"
                   variant="primary" 
-                  className="min-w-[140px] flex items-center justify-center gap-2"
+                  className="min-w-[120px] sm:min-w-[140px] flex items-center justify-center gap-2 px-4 py-2 text-sm sm:text-base"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

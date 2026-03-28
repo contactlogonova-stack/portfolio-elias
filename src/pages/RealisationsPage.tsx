@@ -18,7 +18,7 @@ export default function RealisationsPage() {
   const { avis, loading: loadingAvis } = useAvis();
 
   useEffect(() => {
-    console.log('RealisationsPage avis state:', { avis, loadingAvis });
+    // avis state check
   }, [avis, loadingAvis]);
 
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -26,7 +26,7 @@ export default function RealisationsPage() {
 
   useEffect(() => {
     if (selectedProject) {
-      console.log('Selected Realisation:', selectedProject);
+      // selected project check
     }
   }, [selectedProject]);
 
@@ -232,7 +232,7 @@ export default function RealisationsPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-title font-bold text-primary-900 mb-4">
@@ -245,7 +245,7 @@ export default function RealisationsPage() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
               className="grid grid-cols-1 md:grid-cols-2 gap-8"
             >
               {avis.map((review) => (

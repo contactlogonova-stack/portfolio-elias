@@ -113,7 +113,7 @@ export default function ServicesPage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-100px" }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             {services.map((service) => (
@@ -156,7 +156,7 @@ export default function ServicesPage() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-100px" }}
               className="flex overflow-x-auto snap-x snap-mandatory pb-8 md:grid md:grid-cols-4 md:overflow-visible md:pb-0 gap-6"
             >
               {processSteps.map((step, idx) => (
@@ -182,7 +182,7 @@ export default function ServicesPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           className="container mx-auto"
         >
           <h2 className="text-4xl md:text-5xl font-title font-bold text-white mb-6">

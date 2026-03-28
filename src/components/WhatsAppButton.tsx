@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { scaleIn } from '../lib/animations';
+import { scaleIn, pulseAnimation } from '../lib/animations';
 
 export default function WhatsAppButton() {
   const { t } = useTranslation();
@@ -28,19 +28,10 @@ export default function WhatsAppButton() {
         rel="noopener noreferrer"
         aria-label={t('whatsapp.aria', { defaultValue: 'Contacter sur WhatsApp' })}
         className="flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-xl hover:shadow-2xl transition-shadow relative"
-        whileHover={{ y: -5 }}
-        animate={{
-          boxShadow: [
-            "0px 0px 0px 0px rgba(37, 211, 102, 0.4)",
-            "0px 0px 0px 15px rgba(37, 211, 102, 0)",
-          ],
-        }}
-        transition={{
-          boxShadow: {
-            duration: 2,
-            repeat: Infinity,
-          }
-        }}
+        whileHover={{ y: -5, scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        variants={pulseAnimation}
+        animate="animate"
       >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"

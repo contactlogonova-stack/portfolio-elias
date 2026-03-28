@@ -104,7 +104,7 @@ export default function HomePage() {
   const [stats, setStats] = useState<Stat[]>([]);
 
   useEffect(() => {
-    console.log('HomePage avis state:', { avis, isLoadingAvis });
+    // avis state check
   }, [avis, isLoadingAvis]);
 
   const [isLoadingRealisations, setIsLoadingRealisations] = useState(true);
@@ -165,7 +165,7 @@ export default function HomePage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden bg-white">
+      <section className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden bg-white">
         {/* Background shapes */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
@@ -277,7 +277,7 @@ export default function HomePage() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-100px" }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
             >
               {realisations.map((project) => (
@@ -344,7 +344,7 @@ export default function HomePage() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-100px" }}
               className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-8 md:pb-0 snap-x snap-mandatory no-scrollbar"
             >
               {avis.slice(0, 6).map((review) => (

@@ -80,7 +80,7 @@ export default function AboutPage() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
               className="w-full lg:w-1/3 relative"
             >
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl relative z-10 bg-primary-100">
@@ -100,7 +100,7 @@ export default function AboutPage() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
               className="w-full lg:w-2/3"
             >
               <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-title font-bold text-primary-800 mb-2">
@@ -153,7 +153,7 @@ export default function AboutPage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-100px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12"
           >
             {skills.map((skillGroup, idx) => (
@@ -195,7 +195,7 @@ export default function AboutPage() {
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className={`relative flex flex-col md:flex-row items-start md:items-center ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
                 >
@@ -225,7 +225,7 @@ export default function AboutPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           className="container mx-auto"
         >
           <h2 className="text-4xl md:text-5xl font-title font-bold text-white mb-10">

@@ -238,19 +238,19 @@ export default function AdminMessagesPage() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-y-auto flex flex-col"
+              className="relative w-full max-w-2xl max-h-[95vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col"
             >
-              <div className="sticky top-0 bg-white border-b border-neutral-100 p-6 flex items-center justify-between z-10">
-                <h2 className="text-xl font-bold text-primary-900">Détails du message</h2>
+              <div className="sticky top-0 bg-white border-b border-neutral-100 p-4 sm:p-6 flex items-center justify-between z-10 shrink-0">
+                <h2 className="text-lg sm:text-xl font-bold text-primary-900">Détails du message</h2>
                 <button 
                   onClick={() => setSelectedMessage(null)}
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-neutral-500 hover:text-primary-600 hover:bg-primary-50 transition-colors"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-neutral-500 hover:text-primary-600 hover:bg-primary-50 transition-colors"
                 >
-                  <X size={20} />
+                  <X size={18} />
                 </button>
               </div>
               
-              <div className="p-6 md:p-8 flex-grow">
+              <div className="p-4 sm:p-6 md:p-8 overflow-y-auto flex-1">
                 <div className="bg-neutral-50 rounded-xl p-6 mb-8 border border-neutral-100">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>

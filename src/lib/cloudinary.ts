@@ -27,5 +27,4 @@ export const uploadImage = async (file: File): Promise<string> => {
 
 export const deleteImage = async (publicId: string): Promise<void> => {
   // Placeholder pour l'instant
-  console.log('Delete image placeholder for publicId:', publicId);
 };

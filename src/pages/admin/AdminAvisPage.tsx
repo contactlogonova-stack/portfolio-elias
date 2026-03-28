@@ -203,10 +203,10 @@ export default function AdminAvisPage() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden z-10"
+              className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col max-h-[95vh]"
             >
-              <div className="p-6 border-b border-neutral-100 flex items-center justify-between bg-neutral-50/50">
-                <h2 className="text-xl font-bold text-neutral-900">
+              <div className="p-4 sm:p-6 border-b border-neutral-100 flex items-center justify-between bg-neutral-50/50 shrink-0">
+                <h2 className="text-lg sm:text-xl font-bold text-neutral-900">
                   {editingAvis ? 'Modifier l\'avis' : 'Ajouter un avis'}
                 </h2>
                 <button 
@@ -217,7 +217,7 @@ export default function AdminAvisPage() {
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} className="p-6 space-y-5">
+              <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-y-auto">
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold text-neutral-700 mb-1.5 flex items-center gap-2">
@@ -281,19 +281,19 @@ export default function AdminAvisPage() {
                   </div>
                 </div>
 
-                <div className="flex gap-3 pt-4">
+                <div className="flex gap-3 pt-4 shrink-0">
                   <Button
                     type="button"
                     variant="outline"
                     onClick={handleCloseModal}
-                    className="flex-1 h-12 rounded-xl border-neutral-200"
+                    className="flex-1 h-11 sm:h-12 rounded-xl border-neutral-200 text-sm sm:text-base"
                   >
                     Annuler
                   </Button>
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 h-12 rounded-xl bg-[#1B3F6B] hover:bg-[#1B3F6B]/90 text-white shadow-lg shadow-[#1B3F6B]/20"
+                    className="flex-1 h-11 sm:h-12 rounded-xl bg-[#1B3F6B] hover:bg-[#1B3F6B]/90 text-white shadow-lg shadow-[#1B3F6B]/20 text-sm sm:text-base"
                   >
                     {isSubmitting ? (
                       <Loader2 className="animate-spin" size={20} />

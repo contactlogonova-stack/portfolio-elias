@@ -110,7 +110,8 @@ export default function ContactPage() {
             <motion.div 
               variants={staggerContainer}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
               className="w-full lg:w-5/12"
             >
               <motion.h2 variants={fadeInUp} className="text-3xl font-title font-bold text-primary-800 mb-4">

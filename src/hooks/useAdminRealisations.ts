@@ -15,8 +15,6 @@ export function useAdminRealisations() {
         .select('*')
         .order('created_at', { ascending: false });
 
-      console.log('Supabase response (useAdminRealisations):', response);
-
       if (response.error) throw response.error;
       setRealisations(response.data || []);
     } catch (err) {
@@ -29,10 +27,6 @@ export function useAdminRealisations() {
   useEffect(() => {
     fetchRealisations();
   }, []);
-
-  useEffect(() => {
-    console.log('State realisations (useAdminRealisations):', realisations);
-  }, [realisations]);
 
   const addRealisation = async (
     data: Omit<Realisation, 'id' | 'created_at'>,

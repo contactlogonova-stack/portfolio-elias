@@ -15,8 +15,6 @@ export function useRealisations() {
           .select('*')
           .order('created_at', { ascending: false });
 
-        console.log('Supabase response (useRealisations):', response);
-
         if (response.error) throw response.error;
         setRealisations(response.data || []);
       } catch (err) {
@@ -29,10 +27,6 @@ export function useRealisations() {
 
     fetchRealisations();
   }, []);
-
-  useEffect(() => {
-    console.log('State realisations (useRealisations):', realisations);
-  }, [realisations]);
 
   return { realisations, loading, error };
 }
