@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, MessageSquare, FolderOpen, Star, BarChart2, LogOut } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, FolderOpen, Star, BarChart2, LogOut, Settings } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
+import { useMessages } from '../../hooks/useMessages';
 
 interface AdminSidebarProps {
   onClose?: () => void;
@@ -8,13 +9,15 @@ interface AdminSidebarProps {
 
 export default function AdminSidebar({ onClose }: AdminSidebarProps) {
   const { signOut } = useAuth();
+  const { unreadCount } = useMessages();
 
   const navItems = [
     { to: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { to: '/admin/messages', icon: MessageSquare, label: 'Messages', badge: 3 }, // Placeholder badge
+    { to: '/admin/messages', icon: MessageSquare, label: 'Messages', badge: unreadCount > 0 ? unreadCount : undefined },
     { to: '/admin/realisations', icon: FolderOpen, label: 'Réalisations' },
     { to: '/admin/avis', icon: Star, label: 'Avis' },
     { to: '/admin/stats', icon: BarChart2, label: 'Statistiques' },
+    { to: '/admin/settings', icon: Settings, label: 'Paramètres' },
   ];
 
   return (

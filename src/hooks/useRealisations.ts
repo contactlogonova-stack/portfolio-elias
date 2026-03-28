@@ -10,14 +10,17 @@ export function useRealisations() {
   useEffect(() => {
     async function fetchRealisations() {
       try {
-        const { data, error } = await supabase
+        const response = await supabase
           .from('realisations')
           .select('*')
           .order('created_at', { ascending: false });
 
-        if (error) throw error;
-        setRealisations(data || []);
+        console.log('Supabase response (useRealisations):', response);
+
+        if (response.error) throw response.error;
+        setRealisations(response.data || []);
       } catch (err) {
+        console.error('Supabase error (useRealisations):', err);
         setError(err instanceof Error ? err : new Error('Unknown error'));
       } finally {
         setLoading(false);
@@ -26,6 +29,10 @@ export function useRealisations() {
 
     fetchRealisations();
   }, []);
+
+  useEffect(() => {
+    console.log('State realisations (useRealisations):', realisations);
+  }, [realisations]);
 
   return { realisations, loading, error };
 }

@@ -33,7 +33,20 @@ CREATE TABLE avis (
 
 CREATE TABLE push_subscriptions (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
     subscription JSONB NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    UNIQUE(user_id)
+);
+
+CREATE TABLE stats (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    value TEXT NOT NULL,
+    label_fr TEXT NOT NULL,
+    label_en TEXT NOT NULL,
+    label_de TEXT NOT NULL,
+    icon TEXT NOT NULL,
+    order_index INTEGER DEFAULT 0 NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
@@ -42,6 +55,11 @@ ALTER TABLE messages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE realisations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE avis ENABLE ROW LEVEL SECURITY;
 ALTER TABLE push_subscriptions ENABLE ROW LEVEL SECURITY;
+-- Disable RLS for stats as requested
+ALTER TABLE stats DISABLE ROW LEVEL SECURITY;
+
+-- Policies for stats (optional if RLS is disabled, but good for reference)
+CREATE POLICY "Allow public access on stats" ON stats FOR ALL USING (true) WITH CHECK (true);
 
 -- Policies for messages
 CREATE POLICY "Allow public insert on messages" ON messages FOR INSERT WITH CHECK (true);
@@ -61,6 +79,6 @@ CREATE POLICY "Allow authenticated update on avis" ON avis FOR UPDATE USING (aut
 CREATE POLICY "Allow authenticated delete on avis" ON avis FOR DELETE USING (auth.role() = 'authenticated');
 
 -- Policies for push_subscriptions
-CREATE POLICY "Allow public insert on push_subscriptions" ON push_subscriptions FOR INSERT WITH CHECK (true);
-CREATE POLICY "Allow authenticated select on push_subscriptions" ON push_subscriptions FOR SELECT USING (auth.role() = 'authenticated');
-CREATE POLICY "Allow authenticated delete on push_subscriptions" ON push_subscriptions FOR DELETE USING (auth.role() = 'authenticated');
+CREATE POLICY "Les utilisateurs gerent leurs propres abonnements"
+  ON push_subscriptions FOR ALL
+  USING (auth.uid() = user_id);

@@ -1,9 +1,10 @@
+import * as React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import * as Icons from 'lucide-react';
-import { ArrowRight } from 'lucide-react';
+import { Star, ArrowRight } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { Button } from '../components/ui/Button';
 import { SectionTitle } from '../components/ui/SectionTitle';
@@ -12,21 +13,14 @@ import { Badge } from '../components/ui/Badge';
 import { Spinner } from '../components/ui/Spinner';
 import { fadeInUp, staggerContainer } from '../lib/animations';
 import type { Stat } from '../lib/database.types';
+import { useAvis } from '../hooks/useAvis';
 
 interface Realisation {
   id: string;
   title: string;
   image_url: string;
   category: string;
-  tech_stack: string[];
-}
-
-interface Avis {
-  id: string;
-  client_name: string;
-  client_role: string;
-  content: string;
-  rating: number;
+  stack: string[];
 }
 
 const Typewriter = () => {
@@ -62,14 +56,24 @@ const Typewriter = () => {
   );
 };
 
-const AnimatedCounter = ({ value, label, icon: Icon, suffix = "" }: { value: number, label: string, icon: any, suffix?: string }) => {
+interface AnimatedCounterProps {
+  value: string;
+  label: string;
+  icon: any;
+}
+
+const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ value, label, icon: Icon }) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
   const [count, setCount] = useState(0);
 
+  const numericValue = parseInt(value);
+  const suffix = value.replace(/[0-9]/g, '');
+  const isNumeric = !isNaN(numericValue);
+
   useEffect(() => {
-    if (inView) {
-      const controls = animate(0, value, {
+    if (inView && isNumeric) {
+      const controls = animate(0, numericValue, {
         duration: 2,
         ease: "easeOut",
         onUpdate(val) {
@@ -78,7 +82,7 @@ const AnimatedCounter = ({ value, label, icon: Icon, suffix = "" }: { value: num
       });
       return () => controls.stop();
     }
-  }, [inView, value]);
+  }, [inView, numericValue, isNumeric]);
 
   return (
     <div ref={ref} className="flex flex-col items-center text-center p-6">
@@ -86,7 +90,7 @@ const AnimatedCounter = ({ value, label, icon: Icon, suffix = "" }: { value: num
         <Icon size={32} />
       </div>
       <div className="text-4xl font-title font-bold text-white mb-2">
-        {count}{suffix}
+        {isNumeric ? `${count}${suffix}` : value}
       </div>
       <div className="text-primary-200 font-medium">{label}</div>
     </div>
@@ -96,10 +100,14 @@ const AnimatedCounter = ({ value, label, icon: Icon, suffix = "" }: { value: num
 export default function HomePage() {
   const { t, i18n } = useTranslation();
   const [realisations, setRealisations] = useState<Realisation[]>([]);
-  const [avis, setAvis] = useState<Avis[]>([]);
+  const { avis, loading: isLoadingAvis } = useAvis();
   const [stats, setStats] = useState<Stat[]>([]);
+
+  useEffect(() => {
+    console.log('HomePage avis state:', { avis, isLoadingAvis });
+  }, [avis, isLoadingAvis]);
+
   const [isLoadingRealisations, setIsLoadingRealisations] = useState(true);
-  const [isLoadingAvis, setIsLoadingAvis] = useState(true);
   const [isLoadingStats, setIsLoadingStats] = useState(true);
 
   useEffect(() => {
@@ -119,22 +127,6 @@ export default function HomePage() {
       }
     };
 
-    const fetchAvis = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('avis')
-          .select('*')
-          .order('created_at', { ascending: false })
-          .limit(3);
-        if (error) throw error;
-        setAvis(data || []);
-      } catch (err) {
-        console.error("Error fetching avis:", err);
-      } finally {
-        setIsLoadingAvis(false);
-      }
-    };
-
     const fetchStats = async () => {
       try {
         const { data, error } = await supabase
@@ -151,9 +143,24 @@ export default function HomePage() {
     };
 
     fetchRealisations();
-    fetchAvis();
     fetchStats();
   }, []);
+
+  const getInitialsColor = (name: string) => {
+    const colors = [
+      'bg-blue-100 text-blue-700',
+      'bg-green-100 text-green-700',
+      'bg-purple-100 text-purple-700',
+      'bg-orange-100 text-orange-700',
+      'bg-pink-100 text-pink-700',
+      'bg-indigo-100 text-indigo-700',
+    ];
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return colors[Math.abs(hash) % colors.length];
+  };
 
   return (
     <div className="w-full">
@@ -246,7 +253,6 @@ export default function HomePage() {
                     value={stat.value} 
                     label={label} 
                     icon={IconComponent} 
-                    suffix="+" 
                   />
                 );
               })}
@@ -295,7 +301,7 @@ export default function HomePage() {
                         {project.title}
                       </h3>
                       <div className="flex flex-wrap gap-2 mt-auto pt-4">
-                        {(project.tech_stack || []).map((tech, idx) => (
+                        {(project.stack || []).map((tech, idx) => (
                           <Badge key={idx} variant="gray">{tech}</Badge>
                         ))}
                       </div>
@@ -321,8 +327,12 @@ export default function HomePage() {
       </section>
 
       {/* Reviews Section */}
-      {(!isLoadingAvis && avis.length > 0) && (
-        <section className="py-24 bg-neutral-50">
+      {isLoadingAvis ? (
+        <div className="flex justify-center py-12">
+          <Spinner size="lg" />
+        </div>
+      ) : avis.length > 0 ? (
+        <section className="py-24 bg-[#F8FAFC]">
           <div className="container mx-auto px-4 md:px-6">
             <SectionTitle
               title={t('reviews.title')}
@@ -335,25 +345,29 @@ export default function HomePage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-8 md:pb-0 snap-x snap-mandatory no-scrollbar"
             >
-              {avis.map((review) => (
-                <motion.div key={review.id} variants={fadeInUp}>
-                  <Card className="p-8 h-full flex flex-col">
+              {avis.slice(0, 6).map((review) => (
+                <motion.div 
+                  key={review.id} 
+                  variants={fadeInUp}
+                  className="min-w-[85%] sm:min-w-[45%] md:min-w-0 snap-center"
+                >
+                  <Card className="p-8 h-full flex flex-col bg-white border-none shadow-sm hover:shadow-md transition-shadow">
                     <div className="flex gap-1 mb-6">
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          size={20}
+                          size={18}
                           className={i < review.rating ? "fill-yellow-400 text-yellow-400" : "fill-neutral-200 text-neutral-200"}
                         />
                       ))}
                     </div>
-                    <p className="text-neutral-700 italic mb-8 flex-grow">
+                    <p className="text-neutral-700 italic mb-8 flex-grow leading-relaxed">
                       "{review.content}"
                     </p>
                     <div className="flex items-center gap-4 mt-auto">
-                      <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-bold text-lg uppercase">
+                      <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg uppercase ${getInitialsColor(review.client_name)}`}>
                         {review.client_name.charAt(0)}
                       </div>
                       <div>
@@ -367,7 +381,7 @@ export default function HomePage() {
             </motion.div>
           </div>
         </section>
-      )}
+      ) : null}
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-primary-800 to-accent-600 relative overflow-hidden">
