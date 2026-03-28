@@ -160,22 +160,22 @@ export default function AdminStatsPage() {
             >
               <Card className="p-6 bg-white border-neutral-100 shadow-sm hover:shadow-md transition-all group relative overflow-hidden">
                 {/* Boutons d'action */}
-                <div className="absolute top-3 right-3 flex gap-1 z-10">
+                <div className="absolute top-3 right-3 flex gap-1 z-10 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   <button 
                     type="button"
                     onClick={() => openEditModal(stat)}
-                    className="p-2 text-blue-600 hover:bg-blue-50 bg-blue-50/50 rounded-lg transition-colors shadow-sm"
+                    className="p-2.5 text-blue-600 hover:bg-blue-50 bg-blue-50/80 md:bg-blue-50/50 rounded-lg transition-colors shadow-sm"
                     title="Modifier"
                   >
-                    <Edit2 size={16} />
+                    <Edit2 size={18} />
                   </button>
                   <button 
                     type="button"
                     onClick={() => handleDelete(stat.id)}
-                    className="p-2 text-red-600 hover:bg-red-50 bg-red-50/50 rounded-lg transition-colors shadow-sm"
+                    className="p-2.5 text-red-600 hover:bg-red-50 bg-red-50/80 md:bg-red-50/50 rounded-lg transition-colors shadow-sm"
                     title="Supprimer"
                   >
-                    <Trash2 size={16} />
+                    <Trash2 size={18} />
                   </button>
                 </div>
 

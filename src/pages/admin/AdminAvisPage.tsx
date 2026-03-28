@@ -154,20 +154,20 @@ export default function AdminAvisPage() {
               <Card className="p-6 h-full flex flex-col bg-white border-neutral-100 shadow-sm hover:shadow-md transition-all group">
                 <div className="flex justify-between items-start mb-4">
                   {renderStars(item.rating)}
-                  <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="flex gap-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                     <button 
                       onClick={() => handleOpenModal(item)}
-                      className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                      className="p-2.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors bg-blue-50/50 md:bg-transparent"
                       title="Modifier"
                     >
-                      <Edit2 size={18} />
+                      <Edit2 size={20} />
                     </button>
                     <button 
                       onClick={() => handleDelete(item.id)}
-                      className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      className="p-2.5 text-red-600 hover:bg-red-50 rounded-lg transition-colors bg-red-50/50 md:bg-transparent"
                       title="Supprimer"
                     >
-                      <Trash2 size={18} />
+                      <Trash2 size={20} />
                     </button>
                   </div>
                 </div>

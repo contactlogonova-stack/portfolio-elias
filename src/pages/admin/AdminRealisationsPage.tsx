@@ -328,12 +328,18 @@ export default function AdminRealisationsPage() {
                 
                 <div className="flex items-center justify-between pt-3 border-t border-neutral-100">
                   <Badge variant="blue" className="text-xs">{item.category}</Badge>
-                  <div className="flex items-center gap-1">
-                    <button onClick={() => handleOpenModal(item)} className="p-2 text-neutral-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors">
-                      <Edit2 size={18} />
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={() => handleOpenModal(item)} 
+                      className="p-2.5 text-blue-600 bg-blue-50/50 rounded-lg transition-colors active:bg-blue-100"
+                    >
+                      <Edit2 size={20} />
                     </button>
-                    <button onClick={() => handleDelete(item.id)} className="p-2 text-neutral-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
-                      <Trash2 size={18} />
+                    <button 
+                      onClick={() => handleDelete(item.id)} 
+                      className="p-2.5 text-red-600 bg-red-50/50 rounded-lg transition-colors active:bg-red-100"
+                    >
+                      <Trash2 size={20} />
                     </button>
                   </div>
                 </div>

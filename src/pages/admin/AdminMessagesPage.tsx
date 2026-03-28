@@ -213,20 +213,20 @@ export default function AdminMessagesPage() {
               </div>
 
               {/* Actions */}
-              <div className="flex items-center gap-2 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity pt-4 sm:pt-0 border-t sm:border-0 border-neutral-100">
+              <div className="flex items-center gap-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity pt-4 sm:pt-0 border-t sm:border-0 border-neutral-100">
                 <button
                   onClick={(e) => handleToggleRead(e, msg)}
-                  className="p-2 rounded-lg text-neutral-400 hover:bg-primary-50 hover:text-primary-600 transition-colors"
+                  className="p-2.5 rounded-lg text-primary-600 bg-primary-50/50 md:bg-transparent md:text-neutral-400 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                   title={msg.is_read ? "Marquer comme non lu" : "Marquer comme lu"}
                 >
-                  {msg.is_read ? <Mail size={18} /> : <MailOpen size={18} />}
+                  {msg.is_read ? <Mail size={20} /> : <MailOpen size={20} />}
                 </button>
                 <button
                   onClick={(e) => handleDelete(e, msg.id)}
-                  className="p-2 rounded-lg text-neutral-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+                  className="p-2.5 rounded-lg text-red-600 bg-red-50/50 md:bg-transparent md:text-neutral-400 hover:bg-red-50 hover:text-red-600 transition-colors"
                   title="Supprimer"
                 >
-                  <Trash2 size={18} />
+                  <Trash2 size={20} />
                 </button>
               </div>
             </motion.div>
