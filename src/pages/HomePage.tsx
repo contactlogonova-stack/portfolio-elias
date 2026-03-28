@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
+import { motion, AnimatePresence, useInView, animate } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import * as Icons from 'lucide-react';
 import { Star, ArrowRight } from 'lucide-react';

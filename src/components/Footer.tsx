@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Github, Linkedin, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../lib/animations';

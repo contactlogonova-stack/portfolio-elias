@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { MapPin, Calendar, Globe, Briefcase, Code, Database, Wrench, BookOpen, CheckCircle2 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
