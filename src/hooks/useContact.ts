@@ -19,6 +19,10 @@ export function useContact() {
     setError(null);
 
     try {
+      if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+        throw new Error('Supabase configuration is missing. Please ensure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set in your environment variables.');
+      }
+
       const { error: supabaseError } = await supabase
         .from('messages')
         .insert([

@@ -13,6 +13,7 @@ import { fadeInUp, staggerContainer } from '../lib/animations';
 export default function ContactPage() {
   const { t } = useTranslation();
   const { loading, success, error, sendMessage } = useContact();
+  const isConfigMissing = !import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY;
 
   const [formData, setFormData] = useState<ContactData>({
     name: '',
@@ -188,6 +189,12 @@ export default function ContactPage() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="w-full lg:w-7/12"
             >
+              {isConfigMissing && (
+                <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-sm">
+                  <p className="font-bold mb-1">⚠️ Configuration manquante</p>
+                  <p>Les variables d'environnement Supabase ne sont pas détectées. Assurez-vous d'avoir ajouté <b>VITE_SUPABASE_URL</b> et <b>VITE_SUPABASE_ANON_KEY</b> dans les réglages d'AI Studio.</p>
+                </div>
+              )}
               <Card className="p-6 md:p-10 shadow-xl border-0">
                 {success && (
                   <motion.div 
